@@ -1,3 +1,5 @@
+pipeline {
+
 stage('Clone Git repository') {
 checkout scm
 }
@@ -17,4 +19,6 @@ app.push("latest")
 stage('Run container') {
 sh 'echo Run container'
 sh 'ansible-playbook /opt/playbooks/docker_playbook.yaml -i /opt/playbooks/hosts'
+}
+
 }
