@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "gustavoapolinario/docker-test"
+    registry = "donalpatino/hello-world"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
@@ -17,7 +17,7 @@ stage('Build Image') {
     steps {
         script {
 sh 'echo Build application image'
-dockerImage = docker.build("donalpatino/hello-world -f ./Dockerfile.build")
+dockerImage = docker.build registry
         }
     }
 }
