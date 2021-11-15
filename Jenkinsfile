@@ -11,7 +11,7 @@ stage('Build Image') {
     steps {
         script {
 sh 'echo Build application image'
-def app = docker.build("hello-world", "./")
+def app = docker.build("donalpatino/hello-world", "-f ./Dockerfile.build")
         }
     }
 }
