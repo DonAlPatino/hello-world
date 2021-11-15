@@ -1,4 +1,10 @@
 pipeline {
+  environment {
+    registry = "gustavoapolinario/docker-test"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+  }
+
     agent any
 stages {
 stage('Clone Git repository') {
@@ -11,7 +17,7 @@ stage('Build Image') {
     steps {
         script {
 sh 'echo Build application image'
-def app = docker.build("donalpatino/hello-world -f ./Dockerfile.build")
+dockerImage = docker.build("donalpatino/hello-world -f ./Dockerfile.build")
         }
     }
 }
@@ -21,7 +27,7 @@ stage('Push image to Docker Hub') {
         script {
 sh 'echo Push image to a Docker Hub'
 docker.withRegistry('https://registry.hub.docker.com', 'docker_id') {
-app.push("latest")
+dockerImage.push("latest")
 }
 } 
 }
