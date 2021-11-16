@@ -36,7 +36,7 @@ dockerImage.push("latest")
 stage('Run container') {
 steps {
 sh 'echo Run container'
-sh 'ansible-playbook /opt/playbooks/docker_playbook.yaml -i /opt/playbooks/hosts'
+sh 'ansible-playbook /opt/playbooks/docker_playbook.yaml -i /opt/playbooks/hosts.ini'
 }
 }
 }
