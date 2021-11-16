@@ -1,0 +1,14 @@
+---
+- name: Run all-your-base-image
+  docker_container:
+    name: all-your-base
+    image: donalpatino/hello-world:latest
+    state: started
+    recreate: yes
+    pull: true
+    ports:
+     - "80:80"
+    exposed_ports:
+      - "80"
+    detach: true
+    container_default_behavior: compatibility
